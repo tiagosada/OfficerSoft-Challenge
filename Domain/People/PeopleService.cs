@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Domain.Common;
-using Domain.MailServices;
-using Domain.MailServices.Templates;
 using Domain.Users;
 
 namespace Domain.People
@@ -12,7 +10,7 @@ namespace Domain.People
         private readonly IPeopleRepository _repository;
         private readonly IUsersService _usersService;
         
-        public StudentsService(IPeopleRepository repository, IUsersService usersService) : base(repository)
+        public PeopleService(IPeopleRepository repository, IUsersService usersService) : base(repository)
         {
             _repository = repository;
             _usersService = usersService;
@@ -23,7 +21,7 @@ namespace Domain.People
             string cpf,
             string cep,
             string address,
-            string number,
+            int number,
             string district,
             string complement,
             string uf,

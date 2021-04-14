@@ -1,27 +1,30 @@
-using System;
+using System.Collections.Generic;
 using System.Linq;
+using System;
+using Domain.Common;
 using System.Text.RegularExpressions;
 
-namespace Domain.Common
+namespace Domain.People
 {
-    public abstract class Person : Entity
+    public class Person : Entity
     {
         public string CPF { get; protected set; }
         public string Name { get; protected set; }
         public string CEP { get; protected set; }
         public string Address { get; protected set; }
-        public string Number { get; protected set; }
+        public int Number { get; protected set; }
         public string District { get; protected set; }
         public string Complement { get; protected set; }
         public string UF { get; protected set; }
         public string RG { get; protected set; }
 
-        protected Person(
+        protected Person() : base() { }
+        public Person(
             string name,
             string cpf,
             string cep,
             string address,
-            string number,
+            int number,
             string district,
             string complement,
             string uf,
@@ -37,7 +40,7 @@ namespace Domain.Common
             Complement = complement;
             UF = uf;
             RG = rg;
-            
+
         }
 
         protected bool ValidateName()
@@ -139,6 +142,24 @@ namespace Domain.Common
                 CEP,
                 @"^\d{5}-\d{3}$"
             );
+        }
+        public (List<string> errors, bool isValid) Validate()
+        {
+            var errs = new List<string>();
+
+            if (!ValidateName())
+            {
+                errs.Add("Invalid name");
+            }
+            if (!ValidateCPF())
+            {
+                errs.Add("Invalid CPF");
+            }
+            if (!ValidateCEP())
+            {
+                errs.Add("Invalid CEP");
+            }
+            return (errs, errs.Count == 0);
         }
     }
 }
