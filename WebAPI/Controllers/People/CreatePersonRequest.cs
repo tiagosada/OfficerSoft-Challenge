@@ -8,7 +8,7 @@ namespace WebAPI.Controllers.People
         public string Name { get;  set; }
         public string CEP { get;  set; }
         public string Address { get;  set; }
-        public int Number { get;  set; }
+        public string Number { get;  set; }
         public string District { get;  set; }
         public string Complement { get;  set; }
         public string UF { get;  set; }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Domain.Common;
 
 namespace Domain.People
@@ -10,12 +11,23 @@ namespace Domain.People
             string cpf,
             string cep,
             string address,
-            int number,
+            string number,
             string district,
             string complement,
             string uf,
             string rg
             );
         void Modify(Person person);
+        List<string> Edit(Guid id,
+            string name,
+            string cpf,
+            string cep,
+            string address,
+            string number,
+            string district,
+            string complement,
+            string uf,
+            string rg
+            );
     }
 }

@@ -12,7 +12,7 @@ namespace Domain.People
         public string Name { get; protected set; }
         public string CEP { get; protected set; }
         public string Address { get; protected set; }
-        public int Number { get; protected set; }
+        public string Number { get; protected set; }
         public string District { get; protected set; }
         public string Complement { get; protected set; }
         public string UF { get; protected set; }
@@ -24,7 +24,7 @@ namespace Domain.People
             string cpf,
             string cep,
             string address,
-            int number,
+            string number,
             string district,
             string complement,
             string uf,
@@ -40,9 +40,30 @@ namespace Domain.People
             Complement = complement;
             UF = uf;
             RG = rg;
-
         }
-
+        public Person(Guid id,
+            string name,
+            string cpf,
+            string cep,
+            string address,
+            string number,
+            string district,
+            string complement,
+            string uf,
+            string rg
+            )
+        {
+            Id = id;
+            Name = name;
+            CPF = cpf;
+            CEP = cep;
+            Address = address;
+            Number = number;
+            District = district;
+            Complement = complement;
+            UF = uf;
+            RG = rg;
+        }
         protected bool ValidateName()
         {
             if (string.IsNullOrEmpty(Name))

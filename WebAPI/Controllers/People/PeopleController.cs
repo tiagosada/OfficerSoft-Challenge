@@ -85,5 +85,31 @@ namespace WebAPI.Controllers.People
             
             return Ok(people.OrderBy(x => x.Name));
         }
+        [HttpPost("{id}/edit")]
+        [Authorize]
+        public IActionResult Modify(Guid id, CreatePersonRequest request)
+        {
+            var person = _peopleService.Get(id);
+
+            if (person == null)
+            {
+                return NotFound();
+            }
+
+            var response = _peopleService.Edit(
+                id,
+                request.Name,
+                request.CPF,
+                request.CEP,
+                request.Address,
+                request.Number,
+                request.District,
+                request.Complement,
+                request.UF,
+                request.RG
+                );            
+
+            return Ok(response);
+        }
     }
 }

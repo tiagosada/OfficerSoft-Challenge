@@ -21,7 +21,7 @@ namespace Domain.People
             string cpf,
             string cep,
             string address,
-            int number,
+            string number,
             string district,
             string complement,
             string uf,
@@ -72,6 +72,80 @@ namespace Domain.People
         public void Modify(Person person)
         {
             _repository.Modify(person);
+        }
+        public List<string> Edit(Guid id,
+            string name,
+            string cpf,
+            string cep,
+            string address,
+            string number,
+            string district,
+            string complement,
+            string uf,
+            string rg
+            )
+        {
+            var person = Get(id);
+            if (person == null)
+            {
+                return new List<string>{"Person not found"};
+            }
+
+            if (name == null)
+            {
+                name = person.Name;
+            }
+            if (cpf == null)
+            {
+                cpf = person.CPF;
+            }
+            if (cep == null)
+            {
+                cep = person.CEP;
+            }
+            if (address == null)
+            {
+                address = person.Address;
+            }
+            if (number == null)
+            {
+                number = person.Number;
+            }
+            if (district == null)
+            {
+                district = person.District;
+            }
+            if (district == null)
+            {
+                district = person.District;
+            }
+            if (complement == null)
+            {
+                complement = person.Complement;
+            }
+            if (uf == null)
+            {
+                uf = person.UF;
+            }
+            if (rg == null)
+            {
+                rg = person.RG;
+            }
+            
+            var updatedPerson = new Person(id,
+                name,
+                cpf,
+                cep,
+                address,
+                number,
+                district,
+                complement,
+                uf,
+                rg);
+
+            Modify(updatedPerson);
+
+            return new List<string>{"Person updated"};
         }
     }
 }

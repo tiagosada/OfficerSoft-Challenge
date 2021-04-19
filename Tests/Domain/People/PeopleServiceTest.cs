@@ -30,7 +30,7 @@ namespace Tests.Domain.People
                 cpf,
                 "14134243324",
                 "St.Sesame",
-                005,
+                "005",
                 "America",
                 "next to Kermet's house",
                 "USA Governament",
@@ -42,7 +42,7 @@ namespace Tests.Domain.People
                 cpf,
                 "47999992222",
                 "St.Sesame",
-                007,
+                "007",
                 "America",
                 "next to Elmo's house",
                 "USA Governament",
@@ -68,7 +68,7 @@ namespace Tests.Domain.People
                 cpf,
                 "47999992222",
                 "St.Sesame",
-                007,
+                "007",
                 "America",
                 "next to Elmo's house",
                 "USA Governament",
@@ -80,7 +80,7 @@ namespace Tests.Domain.People
                 cpf,
                 "4799999222",
                 "St.Sesame",
-                005,
+                "005",
                 "America",
                 "next to Kermit's house",
                 "USA Governament",
@@ -103,7 +103,7 @@ namespace Tests.Domain.People
                 "",
                 "",
                 "",
-                0,
+                "",
                 "",
                 "",
                 "",
@@ -129,7 +129,7 @@ namespace Tests.Domain.People
                 "52774227062",
                 "72830-040",
                 "St.Sesame",
-                007,
+                "007",
                 "America",
                 "next to Elmo's house",
                 "USA Governament",
@@ -142,7 +142,7 @@ namespace Tests.Domain.People
                 x.CPF == "52774227062" &&
                 x.CEP == "72830-040" &&
                 x.Address == "St.Sesame" &&
-                x.Number == 007 &&
+                x.Number == "007" &&
                 x.District == "America" &&
                 x.Complement == "next to Elmo's house" &&
                 x.UF == "USA Governament" &&
