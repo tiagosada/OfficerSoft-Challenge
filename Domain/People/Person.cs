@@ -182,5 +182,13 @@ namespace Domain.People
             }
             return (errs, errs.Count == 0);
         }
+        public string FormatedCPF()
+        {
+            return String.Format(@"000\.000\.000\-00", CPF);
+        }
+        public string FormatedCEP()
+        {
+            return String.Format(@"00000\-000", CEP);
+        }
     }
 }
