@@ -16,7 +16,7 @@ namespace Domain.People
             string complement,
             string uf,
             string rg
-            );
+        );
         void Modify(Person person);
         List<string> Edit(Guid id,
             string name,
@@ -28,6 +28,10 @@ namespace Domain.People
             string complement,
             string uf,
             string rg
-            );
+        );
+        string FormatCPF(string cpf);
+        string UnFormatCPF(string cpf);
+        string FormatCEP(string cep);
+        string UnFormatCEP(string cep);
     }
 }

@@ -25,8 +25,8 @@ namespace WebAPI.Controllers.People
         {
             var response = _peopleService.Create(
                 request.Name,
-                request.CPF,
-                request.CEP,
+                _peopleService.FormatCPF(request.CPF),
+                _peopleService.FormatCEP(request.CEP),
                 request.Address,
                 request.Number,
                 request.District,
@@ -99,8 +99,8 @@ namespace WebAPI.Controllers.People
             var response = _peopleService.Edit(
                 id,
                 request.Name,
-                request.CPF,
-                request.CEP,
+                _peopleService.FormatCPF(request.CPF),
+                _peopleService.FormatCEP(request.CEP),
                 request.Address,
                 request.Number,
                 request.District,

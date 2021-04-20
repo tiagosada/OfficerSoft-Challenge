@@ -35,8 +35,8 @@ namespace Infra.Migrations
 
                     b.Property<string>("CPF")
                         .IsRequired()
-                        .HasMaxLength(11)
-                        .HasColumnType("nvarchar(11)");
+                        .HasMaxLength(14)
+                        .HasColumnType("nvarchar(14)");
 
                     b.Property<string>("Complement")
                         .HasColumnType("nvarchar(max)");
@@ -101,7 +101,7 @@ namespace Infra.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("b0ea86ba-fb2c-485e-859c-727e61b6ef7e"),
+                            Id = new Guid("81736a16-bf3f-41cb-90e3-d11a3e9fc4b3"),
                             Password = "0192023A7BBD73250516F069DF18B500",
                             Username = "Admin"
                         });

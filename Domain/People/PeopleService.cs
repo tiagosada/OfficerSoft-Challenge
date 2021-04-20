@@ -55,6 +55,23 @@ namespace Domain.People
             _repository.Add(person);
             return new CreatedEntityDTO(person.Id);
         }
+        public string FormatCPF(string cpf)
+        {
+            return Convert.ToUInt64(cpf).ToString(@"000\.000\.000\-00");
+        }
+        public string UnFormatCPF(string cpf)
+        {
+            return cpf.Replace(".", string.Empty).Replace("-", string.Empty).Replace("/", string.Empty);
+        }
+
+        public string FormatCEP(string cep)
+        {
+            return Convert.ToUInt64(cep).ToString(@"00000\-000");
+        }
+        public string UnFormatCEP(string cep)
+        {
+            return cep.Replace("-", string.Empty);
+        }
 
         public override bool Remove(Guid id)
         {
@@ -99,9 +116,17 @@ namespace Domain.People
             {
                 cpf = person.CPF;
             }
+            else
+            {
+                FormatCPF(cpf);
+            }
             if (cep == null)
             {
                 cep = person.CEP;
+            }
+            else
+            {
+                FormatCEP(cep);
             }
             if (address == null)
             {
@@ -142,10 +167,16 @@ namespace Domain.People
                 complement,
                 uf,
                 rg);
+            if (updatedPerson.Validate().isValid)
+            {
+                Modify(updatedPerson);
+                return new List<string>{"Person updated"};
+            }
+            else
+            {
+                return updatedPerson.Validate().errors;
+            }
 
-            Modify(updatedPerson);
-
-            return new List<string>{"Person updated"};
         }
     }
 }

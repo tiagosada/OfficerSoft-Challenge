@@ -17,7 +17,7 @@ namespace Infra.Mapping
 
             builder.Property(s => s.CPF)
                 .IsRequired()
-                .HasMaxLength(11);
+                .HasMaxLength(14);
 
             builder.HasIndex(s => s.CPF)
                 .IsUnique();

@@ -93,23 +93,24 @@ namespace Domain.People
 
         protected bool ValidateCPF()
         {
-            if (string.IsNullOrEmpty(CPF))
+            var cpf = CPF.Replace(".", string.Empty).Replace("-", string.Empty).Replace("/", string.Empty); 
+            if (string.IsNullOrEmpty(cpf))
             {
                 return false;
             }
 
-            if (CPF.Length != 11)
+            if (cpf.Length != 11)
             {
                 return false;
             }
 
-            if (!CPF.All(char.IsNumber))
+            if (!cpf.All(char.IsNumber))
             {
                 return false;
             }
 
-            var first = CPF[0];
-            if (CPF.Substring(1, 10).All(x => x == first))
+            var first = cpf[0];
+            if (cpf.Substring(1, 10).All(x => x == first))
             {
                 return false;
             }
@@ -122,7 +123,7 @@ namespace Domain.People
             int sum;
             int rest;
 
-            temp = CPF.Substring(0, 9);
+            temp = cpf.Substring(0, 9);
             sum = 0;
 
             for (int i = 0; i < 9; i++)
@@ -149,7 +150,7 @@ namespace Domain.People
 
             digit += rest.ToString();
 
-            if (CPF.EndsWith(digit))
+            if (cpf.EndsWith(digit))
             {
                 return true;
             }
@@ -182,13 +183,6 @@ namespace Domain.People
             }
             return (errs, errs.Count == 0);
         }
-        public string FormatedCPF()
-        {
-            return String.Format(@"000\.000\.000\-00", CPF);
-        }
-        public string FormatedCEP()
-        {
-            return String.Format(@"00000\-000", CEP);
-        }
+        
     }
 }
